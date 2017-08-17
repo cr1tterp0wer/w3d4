@@ -1,0 +1,29 @@
+body{
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 1.5;
+}
+p,h1,h2,h3,h4,section,div,li,ul,ol,span,article,figure,input{
+  font-family:Arial;
+  margin:inherit;
+  padding:inherit;
+  border:inherit;
+  line-height:inherit;
+}
+
+ol,ul {
+  list-style: none;
+}
+img {
+  width: 100%;
+}
+p{}
+h1{}
+h2{}
+
+
+
+  @media (max-width: 900px) {
+   ol,div,body{background:blue !important;display:absolute;}
+  }
