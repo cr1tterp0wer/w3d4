@@ -20,6 +20,16 @@ class ShortenedUrl < ApplicationRecord
   foreign_key: :user_id,
   class_name: :User
 
+  has_many :visits,
+  primary_key: :id,
+  foreign_key: :url_id,
+  class_name: :Visit
+
+  has_many :visitors,
+  Proc.new {distinct},
+  through: :visits,
+  source: :visitor
+
   def self.random_code
     SecureRandom.urlsafe_base64
   end
@@ -34,4 +44,21 @@ class ShortenedUrl < ApplicationRecord
     super(options)
     ShortenedUrl.store_small_url(self)
   end
+
+  def num_clicks
+    self.visits.length
+  end
+
+  def num_uniques
+    self.visitors.length
+  end
+
+  def num_recent_uniques
+  end
+
+
+
+
+
+
 end
